@@ -7,13 +7,14 @@ import org.junit.Test;
 public class StringCaculatorTests {
 
 	/* input : "1,2,3" 
-	 * Expected Output:RunTimeException*/
+	 * Expected Output:RunTimeException
 	@Test(expected=RuntimeException.class)
 	public void sumOfThreeNumbers() {
 		//assertEquals(RuntimeException.class, StringCalculator.add("1,2,3"));
 		StringCalculator.add("1,2,3");
 		assertTrue(true);
-	}
+	}	
+	*/
 	
 	/* input : "1,2" 
 	 * Expected Output:RunTimeException*/
@@ -42,5 +43,21 @@ public class StringCaculatorTests {
 		assertEquals(0, StringCalculator.add(""));
 	}
 	
+	//Allow the Add method to handle an unknown amount of numbers
+	/*Input : 5,7,6,2,7,6,2
+	 * ExpectedOutput:35 
+	 */
+	@Test
+	public void HandlingUnknowAmoutOfNumbers() {
+		assertEquals(35, StringCalculator.add("5,7,6,2,7,6,2"));
+	}
+	
+	/* input : "1,2,3,5,6,7,Y,8,9" 
+	 * Expected Output:RunTimeException*/
+	@Test(expected=RuntimeException.class)
+	public void HandlingUnknownAmountOfNumbersWithIllegalLiteral() {
+		assertEquals(RuntimeException.class, StringCalculator.add("1,2,3,5,6,7,Y,8,9"));
+		
+	}
 
 }
