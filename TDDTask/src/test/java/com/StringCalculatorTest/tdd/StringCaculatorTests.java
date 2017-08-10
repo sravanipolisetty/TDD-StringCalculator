@@ -8,13 +8,14 @@ public class StringCaculatorTests {
 
 	/* input : "1,2,3" 
 	 * Expected Output:RunTimeException
+	 * Task1: The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will return 0) for example “” or “1” or “1,2” */
 	@Test(expected=RuntimeException.class)
 	public void sumOfThreeNumbers() {
 		//assertEquals(RuntimeException.class, StringCalculator.add("1,2,3"));
 		StringCalculator.add("1,2,3");
 		assertTrue(true);
 	}	
-	*/
+	
 	
 	/* input : "1,2" 
 	 * Expected Output:RunTimeException*/
@@ -58,6 +59,40 @@ public class StringCaculatorTests {
 	public void HandlingUnknownAmountOfNumbersWithIllegalLiteral() {
 		assertEquals(RuntimeException.class, StringCalculator.add("1,2,3,5,6,7,Y,8,9"));
 		
+	}
+	
+	/* input : "1\n2,3"
+	 * Expected Output:6*/
+	@Test
+	public void HandlingLineBreaks() {
+		assertEquals(6, StringCalculator.add("1\n2,3"));		
+	}
+	
+	/* input : "1\n,2,3"
+	 * Expected Output:6*/
+	@Test
+	public void HandlingLineBreaksAndCommas() {
+		assertEquals(6, StringCalculator.add("1\n2,3"));
+		
+	}
+	
+	/* Inputs with delimiters
+	 * input ://1\n,2//5
+	 * ExpectedOutput :8
+	 * */
+	@Test
+	public void handlineDelimiters(){
+		assertEquals(8,StringCalculator.add("//1\n,2//5"));
+	}
+	
+	/* Inputs with delimiters
+	 * input ://1\n,2//5
+	 * ExpectedOutput :8
+	 * */
+	@Test(expected=RuntimeException.class)
+	public void negativeNumbersCountDivisibleByTwo(){
+		StringCalculator.add("//1\n,-2");
+		assertTrue(true);
 	}
 
 }
