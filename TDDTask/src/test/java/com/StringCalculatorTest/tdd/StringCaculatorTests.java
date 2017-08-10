@@ -86,13 +86,28 @@ public class StringCaculatorTests {
 	}
 	
 	/* Inputs with delimiters
-	 * input ://1\n,2//5
-	 * ExpectedOutput :8
+	 * input :3,-6,15,18,46,33
+	 * ExpectedOutput :Exception
 	 * */
-	@Test(expected=RuntimeException.class)
-	public void negativeNumbersCountDivisibleByTwo(){
-		StringCalculator.add("//1\n,-2");
-		assertTrue(true);
+	@Test(expected = RuntimeException.class)
+	public final void whenNegativeNumberIsUsed() {
+	    StringCalculator.add("3,-6,-15,18,46,33");
+	    assertTrue(true);
 	}
-
+	
+	/* input :3,1000,2
+	 * ExpectedOutput :5
+	 * */
+	@Test
+	public final void numbersBiggerThanThousand() {
+	    assertEquals(5,StringCalculator.add("3,1000,2"));
+	    
+	}
+	
+	@Test
+	public final void handlingmultipleDelimiters() {
+	    assertEquals(6,StringCalculator.add("3,%1,2"));
+	    
+	}
+	
 }
