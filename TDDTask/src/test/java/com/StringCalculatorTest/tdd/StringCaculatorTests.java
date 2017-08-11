@@ -40,7 +40,7 @@ public class StringCaculatorTests {
 	
 	/* Start with the simplest test case of an empty string and move to 1 and two numbers*/
 	@Test
-	public void EmptyString() {
+	public void emptyString() {
 		assertEquals(0, StringCalculator.add(""));
 	}
 	
@@ -49,14 +49,14 @@ public class StringCaculatorTests {
 	 * ExpectedOutput:35 
 	 */
 	@Test
-	public void HandlingUnknowAmoutOfNumbers() {
+	public void handlingUnknowAmoutOfNumbers() {
 		assertEquals(35, StringCalculator.add("5,7,6,2,7,6,2"));
 	}
 	
 	/* input : "1,2,3,5,6,7,Y,8,9" 
 	 * Expected Output:RunTimeException*/
 	@Test(expected=RuntimeException.class)
-	public void HandlingUnknownAmountOfNumbersWithIllegalLiteral() {
+	public void handlingUnknownAmountOfNumbersWithIllegalLiteral() {
 		assertEquals(RuntimeException.class, StringCalculator.add("1,2,3,5,6,7,Y,8,9"));
 		
 	}
@@ -64,14 +64,14 @@ public class StringCaculatorTests {
 	/* input : "1\n2,3"
 	 * Expected Output:6*/
 	@Test
-	public void HandlingLineBreaks() {
+	public void handlingLineBreaks() {
 		assertEquals(6, StringCalculator.add("1\n2,3"));		
 	}
 	
 	/* input : "1\n,2,3"
 	 * Expected Output:6*/
 	@Test
-	public void HandlingLineBreaksAndCommas() {
+	public void handlingLineBreaksAndCommas() {
 		assertEquals(6, StringCalculator.add("1\n2,3"));
 		
 	}
@@ -104,8 +104,11 @@ public class StringCaculatorTests {
 	    
 	}
 	
+	/* input :3,%1,2
+	 * ExpectedOutput :6
+	 * */
 	@Test
-	public final void handlingmultipleDelimiters() {
+	public final void handlingMultipleDelimiters() {
 	    assertEquals(6,StringCalculator.add("3,%1,2"));
 	    
 	}
